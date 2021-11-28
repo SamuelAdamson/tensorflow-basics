@@ -15,7 +15,7 @@ import os
 # @RETURN: ( training history, model )
 def ct_model():
     # Model -- l_0
-    #   -- Single Layer
+    #   -- Single Layer, 1 node
     #   -- Input is a single value, 1d array
     l_0 = tf.keras.layers.Dense(units=1, input_shape=[1])
     model = tf.keras.Sequential([l_0])
@@ -57,7 +57,7 @@ def predict(model):
 # Execution
 if __name__ == '__main__':
     # Set logging for errors only
-    os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
+    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
     # Create and train model
     history, model = ct_model()
 
