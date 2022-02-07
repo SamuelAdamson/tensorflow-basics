@@ -8,3 +8,6 @@ env
 
 *.vscode
 */.vscode
+
+*/flower_photos
+*flower_photos
