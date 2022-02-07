@@ -14,3 +14,7 @@ Fashion Classification <br>
 Cats and Dogs <br>
 &emsp; -- Using tensorflow develop a model that classifies images of animals as either cats or dogs <br>
 &emsp; -- Data is packaged as color images of varying size <br>
+<br>
+Classify Flowers <br>
+&emsp; -- Using tensorflow develop a model that classifies images of flowers as one of five categories <br>
+&emsp; -- Data is packaged as color images of varying size <br>
