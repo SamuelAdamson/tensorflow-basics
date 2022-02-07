@@ -9,5 +9,11 @@ env
 *.vscode
 */.vscode
 
+ClassifyFlowers/datasets/*
+*/datasets
+*/datasets/*
+*datasets
 */flower_photos
 *flower_photos
+*/flower_photos.tgz
+*flower_photos.tgz
