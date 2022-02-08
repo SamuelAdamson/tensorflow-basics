@@ -17,3 +17,6 @@ ClassifyFlowers/datasets/*
 *flower_photos
 */flower_photos.tgz
 *flower_photos.tgz
+
+*model.zip
+*/model.zip

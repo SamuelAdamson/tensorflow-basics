@@ -48,12 +48,12 @@ def preprocessData(data_dir, batch_size=100, img_size=150):
         # Normalize image
         image, label = _normalize(image, label)
 
-        # Random flip left-right
-        image = tf.image.random_flip_left_right(image)
-        # Random flip up-down
-        image = tf.image.random_flip_up_down(image)
-        # Random contrast and brightness
-        
+        # Random flip horizontally and vertically
+        image = tf.image.random_flip_left_right(image, seed=np.random.randint(100))
+        image = tf.image.random_flip_up_down(image, seed=np.random.randint(100))
+        # Random contrast and saturation
+        image = tf.image.random_contrast(image, lower=0.8, upper=1.0, seed=np.random.randint(100))
+        image = tf.image.random_saturation(image, lower=0.8, upper=1.0, seed=np.random.randint(100))
 
         return image, label
 
@@ -64,7 +64,8 @@ def preprocessData(data_dir, batch_size=100, img_size=150):
         subset='training',
         image_size=(img_size, img_size),
         batch_size=batch_size,
-        shuffle=False
+        shuffle=True,
+        seed=1
     )
 
     # Validation dataset - 80% of images
@@ -74,7 +75,8 @@ def preprocessData(data_dir, batch_size=100, img_size=150):
         subset='validation',
         image_size=(img_size, img_size),
         batch_size=batch_size,
-        shuffle=False
+        shuffle=True,
+        seed=1
     )
 
     # Get class names
@@ -110,10 +112,10 @@ def visualize(dataset, filepath, class_names):
             plt.xlabel(class_names[labels[i]])
 
     # Save plot
-    #!mkdir figs
+    # !mkdir figs
     plt.savefig(filepath)
     # Show Plot
-    plt.show()
+    # plt.show()
 
 
 # Build model
@@ -161,15 +163,11 @@ def buildModel(img_size=150):
 # PARAMS: Untrained Model, Training Dataset, Validation Dataset, Visual File Path, Epochs, Batch size
 # RETURN: Trained Model
 def trainModel(model, train_ds, valid_ds, filepath, _epochs=80, _batch_size=100):
-    # Number of training
-    num_train = tf.data.experimental.cardinality(train_ds)
-    num_valid = tf.data.experimental.cardinality(valid_ds)
 
     # Store training
     history = model.fit(
         train_ds, batch_size=_batch_size, epochs=_epochs,
-        validation_data=valid_ds, steps_per_epoch=int(np.ceil(num_train / _batch_size)),
-        validation_steps=int(np.ceil(num_valid / _batch_size))
+        validation_data=valid_ds
     )
 
     # Store Accuracy
@@ -210,13 +208,12 @@ def trainModel(model, train_ds, valid_ds, filepath, _epochs=80, _batch_size=100)
 # Program entry point
 if __name__ == '__main__':
     # Get and preprocess data
-    #base_dir = getData()
-    base_dir = './datasets/flower_photos'
+    base_dir = getData()
     train_ds, valid_ds, class_names = preprocessData(base_dir)
 
     # Visualize some sample data
-    # visualize(train_ds.take(1), './figs/training_sample.png', class_names)
-    # visualize(valid_ds.take(1), './figs/validation_sample.png', class_names)
+    visualize(train_ds.take(1), './figs/training_sample.png', class_names)
+    visualize(valid_ds.take(1), './figs/validation_sample.png', class_names)
 
     # Get model
     model = buildModel()
