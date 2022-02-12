@@ -18,3 +18,5 @@ Cats and Dogs <br>
 Classify Flowers <br>
 &emsp; -- Using tensorflow develop a model that classifies images of flowers as one of five categories <br>
 &emsp; -- Data is packaged as color images of varying size <br>
+Time Series <br>
+&emsp; -- Practicing timeseries prediction using Tensorflow <br>

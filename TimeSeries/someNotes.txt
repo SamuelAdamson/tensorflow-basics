@@ -1,0 +1,23 @@
+Fixed Partitioning
+    -- Splitting timeseries into training period, validation period, and test period
+    -- Make sure that each period has numerous seasons
+    -- Train and tune model on training period, validate with validation period
+    -- Train model on combination of training and validation period, test model on testing period
+    -- Testing period is usually in the future
+
+Roll-Forward Partitioning
+    -- Start with small time periods, gradually increase
+    -- Repeatedly train model in order to produce continually accurate results
+
+Naive Forecasting
+    -- Assuming that the next value at a given time interval will be the same as the previous value
+
+Metrics for Time Series Forecasting
+    -- Errors = forecasts - actual
+    -- Mean Squared Error (MSE) = mean of errors^2
+    -- Root Mean Squared Erorr (RMSE) = root of mean of errors^2
+    -- Mean Absolute Error (MAE) = mean of abs(errors)
+    -- Mean Absolute 
+
+
+
