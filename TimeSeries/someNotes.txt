@@ -19,5 +19,7 @@ Metrics for Time Series Forecasting
     -- Mean Absolute Error (MAE) = mean of abs(errors)
     -- Mean Absolute 
 
-
-
+Recurrent Neural Network
+    -- Recurrent layer contains a memory cell reused multiple times
+    -- Output from one memory cell is part of the input for the next memory cell - "Recurrent"
+    -- Recurrent Layers are especially good at processing sequences of data
